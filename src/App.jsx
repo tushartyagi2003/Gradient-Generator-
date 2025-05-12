@@ -39,44 +39,56 @@ function App() {
   const gradient = `linear-gradient(${angle}, ${color1}, ${color2})`;
 
   return (
-    <>
-      <div
-        style={{
-          background: gradient,
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        className="App"
-      >
-        <div>
-          <label htmlFor="angle">Gradient : </label>
-          <select value={angle} id="angle" onChange={handleAngleChange}>
-            <option value="to right">To Right</option>
-            <option value="to left">To Left</option>
-            <option value="to bottom">To Bottom</option>
-            <option value="to top">To Top</option>
-            <option value="45deg">45deg</option>
-            <option value="90deg">90deg</option>
-            <option value="135deg">135deg</option>
-            <option value="180deg">180deg</option>
-          </select>
+    <div className="page-container" style={{ background: gradient }}>
+      <div className="app-container">
+        <h1>Gradient Generator</h1>
+        <div className="controls-container">
+          <div className="control-group">
+            <label htmlFor="angle">Direction:</label>
+            <select value={angle} id="angle" onChange={handleAngleChange}>
+              <option value="to right">To Right</option>
+              <option value="to left">To Left</option>
+              <option value="to bottom">To Bottom</option>
+              <option value="to top">To Top</option>
+              <option value="45deg">45deg</option>
+              <option value="90deg">90deg</option>
+              <option value="135deg">135deg</option>
+              <option value="180deg">180deg</option>
+            </select>
+          </div>
+
+          <div className="color-controls">
+            <div className="color-group">
+              <input
+                type="color"
+                value={color1}
+                onChange={(e) => setColor1(e.target.value)}
+                className="color-picker"
+              />
+              <button className="button" onClick={handleButton1}>
+                Random 1
+              </button>
+            </div>
+
+            <div className="color-group">
+              <input
+                type="color"
+                value={color2}
+                onChange={(e) => setColor2(e.target.value)}
+                className="color-picker"
+              />
+              <button className="button" onClick={handleButton2}>
+                Random 2
+              </button>
+            </div>
+          </div>
+
+          <button className="button copy-button" onClick={copyToClipboard}>
+            Copy CSS
+          </button>
         </div>
-
-        <button className="button" onClick={handleButton1}>
-          {color1}
-        </button>
-
-        <button className="button" onClick={handleButton2}>
-          {color2}
-        </button>
-
-        <button className="button" onClick={copyToClipboard}>
-          Copy Text
-        </button>
       </div>
-    </>
+    </div>
   );
 }
 
